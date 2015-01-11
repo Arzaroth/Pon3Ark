@@ -10,10 +10,6 @@ from __future__ import print_function, absolute_import, unicode_literals
 import os
 import sys
 import getpass
-from src import ArkManager, ArkError
-from src import do_list
-from src import do_extract
-from src import do_create
 
 try:
     PRGM = os.path.basename(__file__)
@@ -84,6 +80,10 @@ def get_password(opts):
     return passwd
 
 if __name__ == '__main__':
+    from src import ArkManager, ArkError
+    from src import do_list
+    from src import do_extract
+    from src import do_create
     from docopt import docopt
     opts = docopt(__doc__, version=VERSION)
     passwd = get_password(opts)

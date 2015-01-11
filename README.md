@@ -13,10 +13,22 @@ Dependencies can be installed with the following command:
 > pip install -r requirements.txt
 ```
 
-Extracting: python Pon3Ark.py -x <ark_file>
-Creating: python Pon3Ark.py -c <ark_file> FILE...
-Adding: python Pon3Ark.py -a <ark_file> FILE...
-Listing: python Pon3Ark.py -t <ark_file>
+Extracting:
+```
+> python Pon3Ark.py -x <ark_file>
+```
+Creating:
+```
+> python Pon3Ark.py -c <ark_file> FILE...
+```
+Adding:
+```
+> python Pon3Ark.py -a <ark_file> FILE...
+```
+Listing:
+```
+> python Pon3Ark.py -t <ark_file>
+```
 
 Automated installation
 ==============

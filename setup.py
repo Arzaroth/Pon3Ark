@@ -16,8 +16,8 @@ setup(
     version=VERSION,
     license='BSD',
 
-    url='https://github.com/Arzaroth/Pon3Ark',
-    download_url='https://github.com/Arzaroth/Pon3Ark/archive/%s.zip' % VERSION,
+    url='https://gitlab.bi.tk/mlp/Pon3Ark',
+    download_url='https://gitlab.bi.tk/mlp/Pon3Ark/archive/%s.zip' % VERSION,
 
     author='Marc-Etienne Barrut',
     author_email='lekva@arzaroth.com',
