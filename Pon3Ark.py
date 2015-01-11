@@ -15,7 +15,7 @@ try:
     PRGM = os.path.basename(__file__)
 except NameError:
     PRGM = os.path.basename(sys.argv[0])
-VERSION = "0.5.0b"
+VERSION = "v0.5.0"
 
 __doc__ = """
 {prgm} {ver}
