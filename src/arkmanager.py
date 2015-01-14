@@ -112,7 +112,7 @@ class ArkManager(object):
                     data = zlib.decompress(data)
                 return data[:meta.original_filesize]
 
-            def add_file(self, path):
+            def add_file(self, path, squash=False):
                 meta = Metadata()
                 if path[0] in "=@:+":
                     meta.flag = path[0]
@@ -120,7 +120,7 @@ class ArkManager(object):
                 else:
                     meta.flag = '='
                 meta.filename = os.path.basename(path)
-                meta.pathname = os.path.dirname(path)
+                meta.pathname = os.path.dirname(path) if not squash else ''
                 meta.original_filesize = os.path.getsize(path)
                 meta.timestamp = int(os.path.getmtime(path))
                 try:

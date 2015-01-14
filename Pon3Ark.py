@@ -23,8 +23,8 @@ Let's open ark files with some music.
 
 Usage:
   {prgm} -x [-vf FILE] [-o DIR] <ark_file> [FILE...]
-  {prgm} -c [-vf FILE] <ark_file> <file>...
-  {prgm} -a [-vf FILE] <ark_file> <file>...
+  {prgm} -c [-vsf FILE] <ark_file> <file>...
+  {prgm} -a [-vsf FILE] <ark_file> <file>...
   {prgm} -t [-vf FILE] <ark_file>
   {prgm} -h
   {prgm} --version
@@ -39,6 +39,7 @@ Options:
   -a                    Append files to the ark file.
   -t                    List the content of the ark file.
   -f --passfile=FILE    Take password from file instead of standard input.
+  -s --squash-path      Squash file path inside the ark file.
   -v                    Enable verbose.
   -o --output=DIR       Write files to DIR [default: out].
   --version             Show version number.
