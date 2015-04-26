@@ -26,7 +26,7 @@ setup(
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.md')).read(),
     keywords='pony cheat hack ark extractor',
 
-    packages=find_packages(),
+    packages=find_packages('.'),
     scripts=['Pon3Ark.py'],
 
     install_requires=open('requirements.txt').read().split('\n'),

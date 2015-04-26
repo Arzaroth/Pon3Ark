@@ -15,7 +15,7 @@ try:
     PRGM = os.path.basename(__file__)
 except NameError:
     PRGM = os.path.basename(sys.argv[0])
-VERSION = "v0.5.1"
+VERSION = "v1.0.0"
 
 __doc__ = """
 {prgm} {ver}
@@ -81,10 +81,10 @@ def get_password(opts):
     return passwd
 
 if __name__ == '__main__':
-    from src import ArkManager, ArkError
-    from src import do_list
-    from src import do_extract
-    from src import do_create
+    from pon3ark import ArkManager, ArkError
+    from pon3ark import do_list
+    from pon3ark import do_extract
+    from pon3ark import do_create
     from docopt import docopt
     opts = docopt(__doc__, version=VERSION)
     passwd = get_password(opts)

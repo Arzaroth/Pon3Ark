@@ -6,10 +6,10 @@
 # arzaroth@arzaroth.com
 #
 
-from src.list import do_list
-from src.extract import do_extract
-from src.create import do_create
-from src.arkmanager import ArkManager, ArkError
+from .list import do_list
+from .extract import do_extract
+from .create import do_create
+from .arkmanager import ArkManager, ArkError
 
 __all__ = [
     'ArkManager',

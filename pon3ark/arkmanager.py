@@ -11,7 +11,7 @@ import os
 import zlib
 import hashlib
 import binascii
-import src.xxtea as xxtea
+import pon3ark.xxtea as xxtea
 from collections import namedtuple
 from struct import pack, unpack
 
