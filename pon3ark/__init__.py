@@ -6,6 +6,8 @@
 # arzaroth@arzaroth.com
 #
 
+from __future__ import absolute_import
+
 from .list import do_list
 from .extract import do_extract
 from .create import do_create
