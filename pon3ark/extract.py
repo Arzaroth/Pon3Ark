@@ -22,16 +22,15 @@ def mkdir_p(path):
 def do_extract(ark, opts):
     for meta in ark.metadatas:
         path = os.path.join(opts['--output'], meta.pathname)
-        file_path = os.path.join(meta.pathname, meta.filename)
         full_path = os.path.join(path, meta.filename)
-        if opts['FILE'] and file_path not in opts['FILE']:
+        if opts['FILE'] and meta.fullpath not in opts['FILE']:
             continue
         mkdir_p(path)
         if opts['-v']:
-            print('Processing %s...' % file_path)
+            print('Processing %s...' % meta.fullpath)
         data = ark.get_file_content(meta)
         if hashlib.md5(data).hexdigest() != meta.md5sum:
-            print('[Warning] %s: checksum mismatch' % file_path)
+            print('[Warning] %s: checksum mismatch' % meta.fullpath)
         with open(full_path, 'wb') as f:
             f.write(data)
         os.utime(full_path, (meta.timestamp, meta.timestamp))

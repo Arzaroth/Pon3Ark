@@ -15,7 +15,7 @@ try:
     PRGM = os.path.basename(__file__)
 except NameError:
     PRGM = os.path.basename(sys.argv[0])
-VERSION = "v1.0.1"
+VERSION = "v1.1.0"
 
 __doc__ = """
 {prgm} {ver}
@@ -23,18 +23,18 @@ Let's open ark files with some music.
 
 Usage:
   {prgm} -x [-vf FILE] [-o DIR] <ark_file> [FILE...]
-  {prgm} -c [-vsf FILE] <ark_file> <file>...
-  {prgm} -a [-vsf FILE] <ark_file> <file>...
+  {prgm} -c [-vsf FILE] <ark_file> FILE...
+  {prgm} -a [-vsf FILE] <ark_file> FILE...
   {prgm} -t [-vf FILE] <ark_file>
   {prgm} -h
   {prgm} --version
 
 Arguments:
   ark_file              Path to ark file.
-  file                  File to put into the ark file. See "How to create".
+  FILE                  Files to put into the ark file. See "How to create".
 
 Options:
-  -x                    Extract giles from the ark file. When given, they specify names of the archive members to be extracted.
+  -x                    Extract files from the ark file. When given, they specify names of the archive members to be extracted.
   -c                    Create the ark file.
   -a                    Append files to the ark file.
   -t                    List the content of the ark file.
@@ -42,7 +42,7 @@ Options:
   -s --squash-path      Squash file path inside the ark file.
   -v                    Enable verbose.
   -o --output=DIR       Write files to DIR [default: out].
-  --version             Show version number.
+  -V --version          Show version number.
   -h --help             Show this help and exit.
 
 How to create:

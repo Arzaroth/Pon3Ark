@@ -104,7 +104,7 @@ class ArkManager(object):
                     raise ArkError("Expected Metadata instance, not %s"
                                    % meta.__class__.__name__)
                 self._file.seek(meta.file_location, os.SEEK_SET)
-                read_size = meta.encrypted_nbytes or meta.compressed_size
+                read_size = meta.size
                 data = read_or_raise(self._file, read_size)
                 if meta.encrypted_nbytes:
                     data = xxtea.decrypt(data, self.passwd)
@@ -131,20 +131,17 @@ class ArkManager(object):
                           path, str(e))
                     return
                 meta.md5sum = hashlib.md5(data).hexdigest()
-                if meta.flag == '@' or meta.flag == '+':
+                if meta.flag in '@+':
                     data = zlib.compress(data, 9)
                 meta.compressed_size = len(data)
-                if meta.flag == ':' or meta.flag == '+':
+                if meta.flag in ':+':
                     data = xxtea.encrypt(data, self.passwd)
                     meta.encrypted_nbytes = len(data)
                 if self.metadatas:
-                    seek = (self.metadatas[-1].file_location +
-                            (self.metadatas[-1].encrypted_nbytes or
-                             self.metadatas[-1].compressed_size))
-                else:
-                    seek = ArkManager.HEADER_SIZE
-                self._file.seek(seek, os.SEEK_SET)
-                meta.file_location = seek
+                    meta.file_location = (self.metadatas[-1].file_location +
+                                          self.metadatas[-1].size)
+                self._file.seek(meta.file_location or ArkManager.HEADER_SIZE,
+                                os.SEEK_SET)
                 self._file.write(data)
                 self.metadatas.append(meta)
                 self.file_count = len(self.metadatas)
@@ -195,3 +192,11 @@ class Metadata(object):
                     self.timestamp,
                     binascii.unhexlify(self.md5sum),
                     self.unknown)
+
+    @property
+    def fullpath(self):
+        return os.path.join(self.pathname, self.filename)
+
+    @property
+    def size(self):
+        return self.encrypted_nbytes or self.compressed_size

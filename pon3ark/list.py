@@ -18,16 +18,15 @@ def do_list(ark, opts):
                                                         'Length'))
         print(' ----  -%s  ---------- -----   ----' % (len_size * '-'))
     for meta in ark.metadatas:
-        full_path = os.path.join(meta.pathname, meta.filename)
         if opts['-v']:
             print('    %s   %*d  %s   %s' % (meta.flag,
                                              len_size,
                                              meta.original_filesize,
                                              dt.fromtimestamp(meta.timestamp)
                                              .strftime('%Y-%m-%d %H:%M'),
-                                             full_path))
+                                             meta.fullpath))
         else:
-            print(full_path)
+            print(meta.fullpath)
     if opts['-v']:
         print(' ----  -%s                     -------' % (len_size * '-'))
         print('        %*d%s%d file%s' % (len_size, total_size,
